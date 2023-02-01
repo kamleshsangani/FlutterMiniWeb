@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+<style>
+.center {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+.btn-group button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 100%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+</style>
+<body class="center">
+
+<h1 class="center">Flutter MiniApp</h1>
+  <br>
+<div class="btn-group">
+  <button onclick = "launchCamera()" >Launch Camera</button>
+  <br>
+  <button onclick = "launchGallery()" >Launch Gallery</button>
+  <br>
+  <button onclick = "launchImageScan()" >Launch Scan</button>
+  <br>
+  <button onclick = "launchLivenessCheck()" >Liveness Check</button>
+</div>
+
+        <script type="text/javascript">
+            function fromFlutter(newTitle) {
+                document.getElementById("title").innerHTML = newTitle;
+             }
+          
+            function selectedFrontImage(selectedImageAsBase64) {
+              document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
+             }
+
+             function launchCamera() {
+                cameraHandler.postMessage("selectedFrontImage");
+             }
+          
+            function launchGallery() {
+                galleryHandler.postMessage("selectedFrontImage");
+             }
+          
+            function launchImageScan() {
+                scanHandler.postMessage("Hello from JS");
+             }
+          
+            function launchLivenessCheck() {
+                livenesseHandler.postMessage("Hello from JS");
+             }
+        </script>
+        
+</body>
+</html>
+
