@@ -43,7 +43,7 @@
   <button onclick = "buttonClickCheck()" >Check Button</button>
 </div>
 
-<h1 id="title">...</h1>
+ <h1 id="title">...</h1>
   <img id="selectedImagePreview" src=""></img>
   
         <script type="text/javascript">
@@ -54,7 +54,7 @@
 
               function buttonClickCheck() {
               if (isAppReady) {
-                  window.flutter_inappwebview.callHandler('checkHandler', 'result');
+                  window.flutter_inappwebview.callHandler('checkHandler', 'selectedFrontImage');
               }
               }
             function fromFlutter(newTitle) {
