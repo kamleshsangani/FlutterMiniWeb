@@ -39,12 +39,24 @@
   <button onclick = "launchImageScan()" >Launch Scan</button>
   <br>
   <button onclick = "launchLivenessCheck()" >Liveness Check</button>
+  <br>
+  <button onclick = "buttonClickCheck()" >Check Button</button>
 </div>
 
 <h1 id="title">...</h1>
   <img id="selectedImagePreview" src=""></img>
   
         <script type="text/javascript">
+         isAppReady = false;
+              window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
+                  isAppReady = true;
+              });
+
+              function buttonClick() {
+              if (isAppReady) {
+                  window.flutter_inappwebview.callHandler('checkHandler', 'result');
+              }
+              }
             function fromFlutter(newTitle) {
                 document.getElementById("title").innerHTML = newTitle;
              }
