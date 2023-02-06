@@ -44,7 +44,8 @@
 </div>
 
  <h1 id="title">...</h1>
-  <img id="selectedImagePreview" src=""></img>
+ <img id="selectedImagePreview" src=""></img>
+ <p id="miniappResult"></p>
 
 <script src="abjsbridge_flutter.js"></script>
 <script>
@@ -53,7 +54,10 @@
                         {    "metadata": {
             "version": 1.0    },
         },
-                        function(result) { console.log(JSON.stringify(result))});});
+                        function(result) {
+            //console.log(JSON.stringify(result))
+            document.getElementById("miniappResult").innerHTML = result;
+        });});
     }
 </script>
 </body>
