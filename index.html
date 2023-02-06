@@ -39,48 +39,12 @@
   <button onclick = "launchImageScan()" >Launch Scan</button>
   <br>
   <button onclick = "launchLivenessCheck()" >Liveness Check</button>
-  <br>
-  <button onclick = "buttonClickCheck()" >Check Button</button>
 </div>
 
  <h1 id="title">...</h1>
   <img id="selectedImagePreview" src=""></img>
-  
-        <script type="text/javascript">
-         isAppReady = false;
-              window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
-                  isAppReady = true;
-              });
 
-              function buttonClickCheck() {
-              if (isAppReady) {
-                  window.flutter_inappwebview.callHandler('checkHandler', 'selectedFrontImage');
-              }
-              }
-            function fromFlutter(newTitle) {
-                document.getElementById("title").innerHTML = newTitle;
-             }
-          
-            function selectedFrontImage(selectedImageAsBase64) {
-              document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
-             }
-
-             function launchCamera() {
-                cameraHandler.postMessage("selectedFrontImage");
-             }
-          
-            function launchGallery() {
-                galleryHandler.postMessage("selectedFrontImage");
-             }
-          
-            function launchImageScan() {
-                scanHandler.postMessage("Hello from JS");
-             }
-          
-            function launchLivenessCheck() {
-                livenesseHandler.postMessage("Hello from JS");
-             }
-        </script>
+<script src="script.js"></script>
         
 </body>
 </html>
