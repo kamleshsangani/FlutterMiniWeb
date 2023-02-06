@@ -49,15 +49,16 @@
 
 <script src="abjsbridge_flutter.js"></script>
 <script>
+    const reqObject = {metadata: "John", version: 1.2, city: "New York"};
+    
+    function getMobileResult(result) {
+        //console.log(JSON.stringify(result))
+        document.getElementById("title").innerHTML = result;
+        //document.getElementById("miniappResult").innerHTML = result;
+    }
+    
     function getMobileAgent() {
-        ABJSBridge.call('abSmeGetMobileAgent',
-                        {    "metadata": {
-            "version": 1.0    },
-        },
-                        function(result) {
-            //console.log(JSON.stringify(result))
-            document.getElementById("miniappResult").innerHTML = result;
-        });
+        ABJSBridge.call('abSmeGetMobileAgent', reqObject, getMobileResult );
     }
 </script>
 </body>
