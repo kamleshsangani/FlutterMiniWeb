@@ -39,13 +39,23 @@
   <button onclick = "launchImageScan()" >Launch Scan</button>
   <br>
   <button onclick = "launchLivenessCheck()" >Liveness Check</button>
+  <br>
+  <button onclick = "getMobileAgent()" >Get Mobile Agent</button>
 </div>
 
  <h1 id="title">...</h1>
   <img id="selectedImagePreview" src=""></img>
 
 <script src="abjsbridge_flutter.js"></script>
-        
+<script>
+    function getMobileAgent() {
+        ABJSBridge.call('abSmeGetMobileAgent',
+                        {    "metadata": {
+            "version": 1.0    },
+        },
+                        function(result) { console.log(JSON.stringify(result))});});
+    }
+</script>
 </body>
 </html>
 
