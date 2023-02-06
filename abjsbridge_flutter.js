@@ -1,4 +1,3 @@
-
             function fromFlutter(newTitle) {
                 document.getElementById("title").innerHTML = newTitle;
              }
@@ -22,15 +21,3 @@
             function launchLivenessCheck() {
                 livenesseHandler.postMessage("Hello from JS");
              }
-
-             // THIS IS FOR InAppWebView PACKAGE METHODS
-              /*isAppReady = false;
-                           window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
-                               isAppReady = true;
-                           });
-
-                           function buttonClickCheck() {
-                           if (isAppReady) {
-                               window.flutter_inappwebview.callHandler('checkHandler', 'selectedFrontImage');
-                           }
-                           }*/
