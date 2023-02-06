@@ -26,9 +26,12 @@ class ABJSBridge {
     static call(functionName, requestBody, callbackName) {
         var javaScriptMessage = {
            body: requestBody,
-           callback: callbackName
+           callback: callbackName.name
         }
         if(functionName == "abSmeGetMobileAgent") {
+            //console.log("functiona Name")
+            //console.log(callbackName.name)
+            //console.log(JSON.stringify(javaScriptMessage))
             mobileAgent.postMessage(JSON.stringify(javaScriptMessage));
         }
     }
