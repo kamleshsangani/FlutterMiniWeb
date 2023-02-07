@@ -45,16 +45,13 @@
 
  <h1 id="title">...</h1>
  <img id="selectedImagePreview" src=""></img>
- <p id="miniappResult"></p>
 
 <script src="abjsbridge_flutter.js"></script>
 <script>
     const reqObject = {metadata: "John", version: 1.2, city: "New York"};
     
     function getMobileResult(result) {
-        //console.log(JSON.stringify(result))
-        document.getElementById("title").innerHTML = JSON.stringify(result);
-        //document.getElementById("miniappResult").innerHTML = result;
+        document.getElementById("title").innerHTML = result;
     }
     
     function getMobileAgent() {
