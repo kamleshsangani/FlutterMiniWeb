@@ -17,7 +17,7 @@ class ANJSBridge {
         } else if(functionName == "anSelectGalleryImage") {
             galleryHandler.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anRunLivenessCheck") {
-            livenesseHandler.postMessage(JSON.stringify(javaScriptMessage));
+            livenessHandler.postMessage(JSON.stringify(javaScriptMessage));
         }
     }
 }
