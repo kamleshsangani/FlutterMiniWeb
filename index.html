@@ -44,16 +44,23 @@
  <h1 id="title">...</h1>
  <img id="selectedImagePreview" src=""></img>
 
-<script src="abjsbridge_flutter.js"></script>
+<script src="anjsbridge_flutter.js"></script>
 <script>
     const reqObject = { "metadata": { "version": 1.0 }};
     
     function anGetMobileAgentResult(result) {
         document.getElementById("title").innerHTML = result;
     }
+
+    function anSelectCameraImageResult(selectedImageAsBase64) {
+    document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
+  }
     
     function getMobileAgent() {
-        ABJSBridge.call('anGetMobileAgent', reqObject, anGetMobileAgentResult );
+        ANJSBridge.call('anGetMobileAgent', reqObject, anGetMobileAgentResult );
+    }
+      function launchCamera() {
+        ANJSBridge.call('anSelectCameraImage', reqObject, anSelectCameraImageResult);
     }
 </script>
 </body>
