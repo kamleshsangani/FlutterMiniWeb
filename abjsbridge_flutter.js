@@ -6,30 +6,20 @@ function selectedFrontImage(selectedImageAsBase64) {
     document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
 }
 
-function launchCamera(callback) {
-    cameraHandler.postMessage(callback);
-}
-
-function launchGallery() {
-    galleryHandler.postMessage(callback);
-}
-
-function launchImageScan() {
-    scanHandler.postMessage("Hello from JS");
-}
-
-function launchLivenessCheck() {
-    livenesseHandler.postMessage("Hello from JS");
-}
-
-class ABJSBridge {
+class ANJSBridge {
     static call(functionName, requestBody, callbackName) {
         var javaScriptMessage = {
            body: requestBody,
            callback: callbackName.name
         }
-        if(functionName == "abSmeGetMobileAgent") {
+        if(functionName == "anGetMobileAgent") {
             mobileAgent.postMessage(JSON.stringify(javaScriptMessage));
+        } else if(functionName == "anSelectCameraImage") {
+            cameraHandler.postMessage(JSON.stringify(javaScriptMessage));
+        } else if(functionName == "anSelectGalleryImage") {
+            galleryHandler.postMessage(JSON.stringify(javaScriptMessage));
+        } else if(functionName == "anRunLivenessCheck") {
+            livenesseHandler.postMessage(JSON.stringify(javaScriptMessage));
         }
     }
 }

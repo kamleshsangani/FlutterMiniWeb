@@ -36,8 +36,6 @@
   <br>
   <button onclick = "launchGallery()" >Launch Gallery</button>
   <br>
-  <button onclick = "launchImageScan()" >Launch Scan</button>
-  <br>
   <button onclick = "launchLivenessCheck()" >Liveness Check</button>
   <br>
   <button onclick = "getMobileAgent()" >Get Mobile Agent</button>
@@ -48,14 +46,14 @@
 
 <script src="abjsbridge_flutter.js"></script>
 <script>
-    const reqObject = {metadata: "John", version: 1.2, city: "New York"};
+    const reqObject = { "metadata": { "version": 1.0 }};
     
-    function getMobileResult(result) {
+    function anGetMobileAgentResult(result) {
         document.getElementById("title").innerHTML = result;
     }
     
     function getMobileAgent() {
-        ABJSBridge.call('abSmeGetMobileAgent', reqObject, getMobileResult );
+        ABJSBridge.call('anGetMobileAgent', reqObject, anGetMobileAgentResult );
     }
 </script>
 </body>
