@@ -46,6 +46,11 @@
 
 <script src="anjsbridge_flutter.js"></script>
 <script>
+    
+    function fromFlutter(newTitle) {
+        document.getElementById("title").innerHTML = newTitle;
+    }
+    
     const reqObject = { "metadata": { "version": 1.0 }};
     
     function anGetMobileAgentResult(result) {

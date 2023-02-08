@@ -1,8 +1,3 @@
-function fromFlutter(newTitle) {
-    document.getElementById("title").innerHTML = newTitle;
-}
-
-
 
 class ANJSBridge {
     static call(functionName, requestBody, callbackName) {
