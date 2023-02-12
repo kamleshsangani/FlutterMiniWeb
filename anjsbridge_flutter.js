@@ -13,6 +13,10 @@ class ANJSBridge {
             galleryHandler.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anRunLivenessCheck") {
             livenessHandler.postMessage(JSON.stringify(javaScriptMessage));
+        } else if(functionName == "anDisplayDialogMessage") {
+            dialogHandler.postMessage(JSON.stringify(javaScriptMessage));
+        } else if(functionName == "anCloseMiniApp") {
+            closeMiniAppHandler.postMessage(JSON.stringify(javaScriptMessage));
         }
     }
 }

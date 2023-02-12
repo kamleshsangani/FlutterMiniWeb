@@ -62,17 +62,24 @@
   }
     
     function getMobileAgent() {
-        ANJSBridge.call('anGetMobileAgent', reqObject, anGetMobileAgentResult );
+        ANJSBridge.call('anGetMobileAgent', JSON.stringify(reqObject), anGetMobileAgentResult );
     }
       function launchCamera() {
-        ANJSBridge.call('anSelectCameraImage', reqObject, anSelectCameraImageResult);
+        ANJSBridge.call('anSelectCameraImage', JSON.stringify(reqObject), anSelectCameraImageResult);
     }
      function launchGallery() {
-        ANJSBridge.call('anSelectGalleryImage', reqObject, anSelectCameraImageResult);
+        ANJSBridge.call('anSelectGalleryImage', JSON.stringify(reqObject), anSelectCameraImageResult);
     }
       function launchLivenessCheck() {
-        ANJSBridge.call('anRunLivenessCheck', reqObject, anGetMobileAgentResult);
+        ANJSBridge.call('anRunLivenessCheck', JSON.stringify(reqObject), anGetMobileAgentResult);
     }
+    function diplayDialogMessage() {
+      ANJSBridge.call('anDisplayDialogMessage', JSON.stringify(reqObject), anGetMobileAgentResult);
+  }
+    function closeMiniApp() {
+        const reqCloseObject = {"request": {"showWarningPopup": true, "warningMessage": { "en": "Are you sure you want to close the application?", "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"}},"metadata":{"version": 1.0, "miniAppId": "SEWRFSD"}};
+      ANJSBridge.call('anCloseMiniApp', JSON.stringify(reqCloseObject), anGetMobileAgentResult);
+  }
 </script>
 </body>
 </html>
