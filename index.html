@@ -70,6 +70,8 @@
     }
     
     function anSelectImageResult(result) {
+        console.log(result);
+        document.getElementById("title").innerHTML = result;
     //document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
     }
 
@@ -92,8 +94,7 @@
          const reqObject = {
              "request": {
                "requestCode": "1234",
-               "title": "Insurance",
-               "isLandscapeMode": true
+               "title": "Insurance"
              },
              "metadata": {
                "version": 1.0,
@@ -111,12 +112,7 @@
     function launchLivenessCheck() {
           const livenessRequest = {
               "request": {
-                "exitMiniApp": true,
-                "warningMessage": {
-                  "en": "Registration completed successfully. Now login to application",
-                  "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"
-                },
-                "action": "OPEN_LOGIN_SCREEN"
+                "appReferenceId": "asdfafadf",
               },
               "metadata": {
                 "version": 1.0,
