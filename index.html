@@ -34,15 +34,23 @@
 <div class="btn-group">
   <button onclick = "launchCamera()" >Launch Camera</button>
   <br>
+  <br>
   <button onclick = "launchGallery()" >Launch Gallery</button>
+  <br>
   <br>
   <button onclick = "launchLivenessCheck()" >Liveness Check</button>
   <br>
+  <br>
   <button onclick = "getMobileAgent()" >Get Mobile Agent</button>
+  <br>
   <br>
   <button onclick = "diplayDialogMessage()" >Display Message</button>
   <br>
+  <br>
   <button onclick = "closeMiniApp()" >Close MiniApp</button>
+  <br>
+  <br>
+  <button onclick = "getCurrentLocation()" >Get Current Location</button>
 </div>
 
  <h1 id="title">...</h1>
@@ -51,40 +59,117 @@
 <script src="anjsbridge_flutter.js"></script>
 <script>
     
-    function fromFlutter(newTitle) {
-        document.getElementById("title").innerHTML = newTitle;
-    }
-    
-    const reqObject = { "metadata": { "version": 1.0 }};
-    
     function anGetMobileAgentResult(result) {
         console.log(result);
         document.getElementById("title").innerHTML = result;
     }
 
-    function anSelectCameraImageResult(selectedImageAsBase64) {
-    document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
-  }
-    
     function getMobileAgent() {
+        const reqObject = { "metadata": { "version": 1.0 }};
         ANJSBridge.call('anGetMobileAgent', JSON.stringify(reqObject), anGetMobileAgentResult );
     }
-      function launchCamera() {
-        ANJSBridge.call('anSelectCameraImage', JSON.stringify(reqObject), anSelectCameraImageResult);
+    
+    function anSelectImageResult(result) {
+    //document.getElementById("selectedImagePreview").src = "data:image/png;base64," + selectedImageAsBase64;
     }
+
+    function launchCamera() {
+        const reqObject = {
+            "request": {
+              "requestCode": "1234",
+              "title": "Insurance",
+              "isLandscapeMode": true
+            },
+            "metadata": {
+              "version": 1.0,
+              "miniAppId": "SEWRFSD"
+            }
+          };
+        ANJSBridge.call('anSelectCameraImage', JSON.stringify(reqObject), anSelectImageResult);
+    }
+    
      function launchGallery() {
-        ANJSBridge.call('anSelectGalleryImage', JSON.stringify(reqObject), anSelectCameraImageResult);
+         const reqObject = {
+             "request": {
+               "requestCode": "1234",
+               "title": "Insurance",
+               "isLandscapeMode": true
+             },
+             "metadata": {
+               "version": 1.0,
+               "miniAppId": "SEWRFSD"
+             }
+           };
+        ANJSBridge.call('anSelectGalleryImage', JSON.stringify(reqObject), anSelectImageResult);
     }
-      function launchLivenessCheck() {
-        ANJSBridge.call('anRunLivenessCheck', JSON.stringify(reqObject), anGetMobileAgentResult);
+    
+    function anRunLivenessCheckResult(result) {
+        console.log(result);
+        document.getElementById("title").innerHTML = result;
     }
+    
+    function launchLivenessCheck() {
+          const livenessRequest = {
+              "request": {
+                "exitMiniApp": true,
+                "warningMessage": {
+                  "en": "Registration completed successfully. Now login to application",
+                  "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"
+                },
+                "action": "OPEN_LOGIN_SCREEN"
+              },
+              "metadata": {
+                "version": 1.0,
+                "miniAppId": "SEWRFSD"
+              }
+            };
+        ANJSBridge.call('anRunLivenessCheck', JSON.stringify(livenessRequest), anRunLivenessCheckResult);
+    }
+    
     function diplayDialogMessage() {
-      ANJSBridge.call('anDisplayDialogMessage', JSON.stringify(reqObject), anGetMobileAgentResult);
+        const displayMessage = {
+            "request": {
+              "exitMiniApp": true,
+              "warningMessage": {
+                "en": "Registration completed successfully. Now login to application",
+                "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"
+              },
+              "action": "OPEN_LOGIN_SCREEN"
+            },
+            "metadata": {
+              "version": 1.0,
+              "miniAppId": "SEWRFSD"
+            }
+          };
+      ANJSBridge.call('anDisplayDialogMessage', JSON.stringify(displayMessage), "");
   }
     function closeMiniApp() {
-        const reqCloseObject = {"request": {"showWarningPopup": true, "warningMessage": { "en": "Are you sure you want to close the application?", "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"}},"metadata":{"version": 1.0, "miniAppId": "SEWRFSD"}};
-      ANJSBridge.call('anCloseMiniApp', JSON.stringify(reqCloseObject), anGetMobileAgentResult);
+        const reqCloseObject = {
+            "request": {
+              "showWarningPopup": true,
+              "warningMessage": {
+                "en": "Are you sure you want to close the application?",
+                "ar": "هل أنت متأكد أنك تريد إغلاق التطبيق؟"
+              }
+            },
+            "metadata": {
+              "version": 1.0,
+              "miniAppId": "SEWRFSD"
+            }
+          };
+      ANJSBridge.call('anCloseMiniApp', JSON.stringify(reqCloseObject), "");
   }
+    
+    function anGetCurrentLocationResult(result) {
+        console.log(result);
+        document.getElementById("title").innerHTML = result;
+    }
+
+    function getCurrentLocation() {
+        const reqObject = { "metadata": { "version": 1.0 }};
+        ANJSBridge.call('anGetCurrentLocation', JSON.stringify(reqObject), anGetCurrentLocationResult );
+    }
+    
 </script>
 </body>
 </html>
