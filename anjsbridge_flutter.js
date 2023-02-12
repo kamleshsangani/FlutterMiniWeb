@@ -18,7 +18,7 @@ class ANJSBridge {
         } else if(functionName == "anCloseMiniApp") {
             closeMiniAppHandler.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anGetCurrentLocation") {
-            closeMiniAppHandler.postMessage(JSON.stringify(javaScriptMessage));
+            locationHandler.postMessage(JSON.stringify(javaScriptMessage));
         }
     }
 }
