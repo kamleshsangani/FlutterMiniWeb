@@ -8,7 +8,7 @@ class ANJSBridge {
         if(functionName == "anGetMobileAgent") {
             mobileAgent.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anSelectCameraImage") {
-            cameraHandler.postMessage(JSON.stringify(javaScriptMessage));
+            window.cameraHandler.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anSelectGalleryImage") {
             galleryHandler.postMessage(JSON.stringify(javaScriptMessage));
         } else if(functionName == "anRunLivenessCheck") {
